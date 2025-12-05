@@ -1,9 +1,11 @@
+// Base URLs dynamically read from environment variables or fallback to localhost for local dev
 const API_BASE_URLS = {
-  product: 'http://localhost:3001',
-  cart: 'http://localhost:3002',
-  order: 'http://localhost:3003',
+  product: process.env.NEXT_PUBLIC_PRODUCT_SERVICE_URL || 'http://localhost:3001',
+  cart: process.env.NEXT_PUBLIC_CART_SERVICE_URL || 'http://localhost:3002',
+  order: process.env.NEXT_PUBLIC_ORDER_SERVICE_URL || 'http://localhost:3003',
 };
 
+// Helper to get a user ID (same as before)
 export const getUserId = () => {
   if (typeof window === 'undefined') return 'default-user';
   let userId = localStorage.getItem('userId');
@@ -14,6 +16,7 @@ export const getUserId = () => {
   return userId;
 };
 
+// -------- Product API --------
 export const productAPI = {
   async getAll() {
     const res = await fetch(`${API_BASE_URLS.product}/products`);
@@ -62,6 +65,7 @@ export const productAPI = {
   },
 };
 
+// -------- Cart API --------
 export const cartAPI = {
   async getCart() {
     const userId = getUserId();
@@ -121,6 +125,7 @@ export const cartAPI = {
   },
 };
 
+// -------- Order API --------
 export const orderAPI = {
   async getOrders() {
     const userId = getUserId();

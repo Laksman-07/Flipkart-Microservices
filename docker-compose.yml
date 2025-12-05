@@ -16,9 +16,9 @@ services:
       - order-service
     environment:
       NODE_ENV: production
-      PRODUCT_SERVICE_URL: http://product-service:3001
-      CART_SERVICE_URL: http://cart-service:3002
-      ORDER_SERVICE_URL: http://order-service:3003
+      NEXT_PUBLIC_PRODUCT_SERVICE_URL: http://product-service:3001
+      NEXT_PUBLIC_CART_SERVICE_URL: http://cart-service:3002
+      NEXT_PUBLIC_ORDER_SERVICE_URL: http://order-service:3003
     command: npm start
     restart: always
 
