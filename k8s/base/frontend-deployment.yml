@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: flipkart
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: laksmans/flipkart-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: NEXT_PUBLIC_PRODUCT_SERVICE_URL
+          value: "http://product-service:3001"
+        - name: NEXT_PUBLIC_CART_SERVICE_URL
+          value: "http://cart-service:3002"
+        - name: NEXT_PUBLIC_ORDER_SERVICE_URL
+          value: "http://order-service:3003"

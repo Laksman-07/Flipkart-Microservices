@@ -1,0 +1,21 @@
+namespace: flipkart
+resources:
+  - ../../base/namespace.yaml
+  - ../../base/frontend-deployment.yaml
+  - ../../base/frontend-service.yaml
+  - ../../base/product-deployment.yaml
+  - ../../base/product-service.yaml
+  - ../../base/cart-deployment.yaml
+  - ../../base/cart-service.yaml
+  - ../../base/order-deployment.yaml
+  - ../../base/order-service.yaml
+
+images:
+  - name: laksmans/flipkart-frontend
+    newTag: latest
+  - name: laksmans/flipkart-product-service
+    newTag: latest
+  - name: laksmans/flipkart-cart-service
+    newTag: latest
+  - name: laksmans/flipkart-order-service
+    newTag: latest
